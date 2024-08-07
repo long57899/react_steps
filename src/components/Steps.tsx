@@ -58,8 +58,8 @@ const Steps: React.FC = () => {
         <h4>Пройдено км</h4>
       </div>
       <form className='input'>
-        <input type="text" value={newDate} onChange={handleDateChange} onKeyDown={handleKeyDown} />
-        <input type="number" step="0.1" value={newDistance} onChange={handleDistanceChange} onKeyDown={handleKeyDown} />
+        <input type="date" value={newDate} onChange={handleDateChange} onKeyDown={handleKeyDown} />
+        <input type="number" min="0" oninput="this.value = Math.abs(this.value)" step="0.1" value={newDistance} onChange={handleDistanceChange} onKeyDown={handleKeyDown} />
         <button type="button" onClick={handleAddDistance}>Добавить</button>
       </form>
       <div className='title-result'>
@@ -70,7 +70,7 @@ const Steps: React.FC = () => {
           <div key={index}>
             <span style={{ marginRight: '70px' }}>{item.date}</span>
             <span style={{ marginRight: '70px' }}>{item.distance}</span>
-            <span onClick={() => handleRemoveDistance(index)} style={{ cursor: 'pointer' }}>✎ ✘</span>
+            <span onClick={() => handleRemoveDistance(index)} style={{ cursor: 'pointer' }}>✘</span>
           </div>
         ))}
       </div>
